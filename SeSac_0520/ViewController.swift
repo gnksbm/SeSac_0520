@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet var twoButton: UIButton!
     @IBOutlet var threeButton: UIButton!
     
+    @IBOutlet var labelList: [UILabel]!
+    
     @IBOutlet var oneLabel: UILabel!
     @IBOutlet var twoLabel: UILabel!
     @IBOutlet var threeLabel: UILabel!
@@ -50,15 +52,6 @@ class ViewController: UIViewController {
     @IBAction func oneButtonTapped(_ sender: UIButton) {
         countList[sender.tag] += 1
         let count = countList[sender.tag]
-        switch sender.tag {
-        case 0:
-            oneLabel.text = "\(count)번"
-        case 1:
-            twoLabel.text = "\(count)번"
-        case 2:
-            threeLabel.text = "\(count)번"
-        default:
-            break
-        }
+        labelList[sender.tag].text = "\(count)번"
     }
 }
