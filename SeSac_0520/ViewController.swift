@@ -16,14 +16,16 @@ class ViewController: UIViewController {
     @IBOutlet var twoLabel: UILabel!
     @IBOutlet var threeLabel: UILabel!
     
+    var countList = Array(repeating: 0, count: 3)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         designLabelUI(labelName: oneLabel, thisIsTextColor: .red)
-        designLabelUI(labelName: twoLabel, thisIsTextColor: .yellow)
+        designLabelUI(labelName: twoLabel, thisIsTextColor: .orange)
         designLabelUI(labelName: threeLabel, thisIsTextColor: .green)
-        designButtonUI(oneButton)
-        designButtonUI(twoButton)
-        designButtonUI(threeButton)
+        designButtonUI(oneButton, title: "1번")
+        designButtonUI(twoButton, title: "2번")
+        designButtonUI(threeButton, title: "3번")
     }
     
     func designLabelUI(
@@ -38,13 +40,25 @@ class ViewController: UIViewController {
     
     func designButtonUI(
         _ button: UIButton,
-        titleColor: UIColor = .red
+        titleColor: UIColor = .red,
+        title: String = "클릭"
     ) {
-        button.setTitle("클릭", for: .normal)
+        button.setTitle(title, for: .normal)
         button.setTitleColor(titleColor, for: .normal)
     }
     
     @IBAction func oneButtonTapped(_ sender: UIButton) {
-        oneLabel.text = "1"
+        countList[sender.tag] += 1
+        let count = countList[sender.tag]
+        switch sender.tag {
+        case 0:
+            oneLabel.text = "\(count)번"
+        case 1:
+            twoLabel.text = "\(count)번"
+        case 2:
+            threeLabel.text = "\(count)번"
+        default:
+            break
+        }
     }
 }
