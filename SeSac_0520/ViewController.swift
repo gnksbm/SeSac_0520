@@ -54,4 +54,15 @@ class ViewController: UIViewController {
         let count = countList[sender.tag]
         labelList[sender.tag].text = "\(count)번"
     }
+    
+    // User Interaction Enabled가 true인 상태에서만 호출됨
+    @IBAction func imageViewTapped(_ sender: UITapGestureRecognizer) {
+    }
+    
+    // 키보드 내리는 법
+    // 1. did end on exit
+    // 2. endEditing(true) ✅
+    @IBAction func keyboardDismiss(_ sender: UITapGestureRecognizer) {
+        sender.view?.endEditing(true)
+    }
 }
